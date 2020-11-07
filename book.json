@@ -1,0 +1,50 @@
+{
+    "title": "前端移动端组件文档",
+    "author": "zhongchao",
+    "description": "前端移动端组件文档",
+    "language": "zh-hans",
+    "gitbook": "3.0.1",
+    "plugins": [
+        "-sharing",
+        "-highlight",
+        "prism",
+        "expandable-chapters",
+        "splitter",
+        "back-to-top-button",
+        "tbfed-pagefooter"
+    ],
+    "pluginsConfig": {
+        "sharing": {
+            "douban": false,
+            "facebook": false,
+            "google": false,
+            "hatenaBookmark": false,
+            "instapaper": false,
+            "line": false,
+            "linkedin": false,
+            "messenger": false,
+            "pocket": false,
+            "qq": false,
+            "qzone": false,
+            "stumbleupon": false,
+            "twitter": false,
+            "viber": false,
+            "vk": false,
+            "weibo": false,
+            "whatsapp": false,
+            "all": [
+                "google", "facebook", "weibo", "twitter",
+                "qq", "qzone", "linkedin", "pocket"
+            ]
+        },
+        "prism":{
+            "css":["prismjs/themes/prism-okaidia.css"]
+        },
+        "tbfed-pagefooter": {
+            "copyright":"",
+            "modify_label":"该文件最后修改时间：",
+            "modify_format":"YYYY-MM-DD HH:mm:ss"
+        }
+
+    }
+}
