@@ -24,7 +24,12 @@
       @delWhole="delWhole"
       @searchHistory="searchHistory"
       @searchDataFun="searchChange"
-      ></searchChange>
+      >
+        <template>
+         //插槽，搜索的样式
+        </template>
+
+      </searchChange>
 ```
 <!-- ## 组织架构（单选）Framework.vue -->
 
