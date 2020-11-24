@@ -16,7 +16,7 @@ import Vue from 'vue'
 import {
     Framework
 } from 'yiyun-app-ozs'
-import 'yiyun-app-ozs/lib/yiyun-app-assembly.css'
+import 'yiyun-app-ozs/lib/yiyun-app-ozs.css'
 
 Vue.component(Framework.name,Framework)
 ```
