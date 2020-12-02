@@ -6,21 +6,27 @@
 ``` html
      <div @click="actionShow = true">选择器</div>
       <van-action-sheet v-model="actionShow" :closeable="false">
-         <van-picker show-toolbar title="时间选择" :columns="columns" ref="picker"
+         <van-picker show-toolbar title="日期选择" :columns="columns" ref="picker"
           @cancel="pickerCancel"
           @confirm="pickerConfirm"
           @change="pickerChange"
-         />
+          />
       </van-action-sheet>
 ```
 
 ``` js
 export default {
+  props:{
+    currentSelection:{
+        type:String,
+        default:''
+    }
+  },
   data(){
     return{
       //选择器
       actionShow:false,
-      columns:[
+columns:[
         {
           values:[], //yyyymmdd 星期X 存放器
           defaultIndex:3,
@@ -52,6 +58,10 @@ export default {
         }
       ],
       default_index:0,//当前位置
+      currentSelectionDate:'',
+      current_index:'',//当前选择的位置
+      currentSelectionTime:'',//当前选择的时
+      currentSelectionBranch:'', //当前选择的分
       totalDateList:[]//yyyymmddhhmmss 格式存放器
     }
   },
@@ -67,10 +77,26 @@ export default {
     data = [...data,...obj.data]
     Adata = [...Adata,...obj.Adata]
     this.columns[0].values = data
-    this.columns[0].defaultIndex = this.default_index
-    this.columns[1].defaultIndex = currentTime
-    this.columns[2].defaultIndex = currentBranch
     this.totalDateList = Adata
+    if(this.currentSelection){
+        this.columns[0].defaultIndex = this.current_index
+        this.columns[1].defaultIndex = this.currentSelectionTime
+        this.columns[2].defaultIndex = this.currentSelectionBranch
+    }else{
+        this.columns[0].defaultIndex = this.default_index
+        this.columns[1].defaultIndex = currentTime
+        this.columns[2].defaultIndex = currentBranch
+    }
+    if(this.totalDateList.length - this.default_index <= 30){
+        let obj = this.timeConversion(currentYear + 1)
+        this.columns[0].values = [...this.columns[0].values,...obj.data]
+        this.totalDateList = [...this.totalDateList,...obj.Adata]
+    }else if(this.default_index <= 30){
+      let obj = this.timeConversion(currentYear - 1)
+      this.columns[0].values = [...obj.data,...this.columns[0].values]
+      this.totalDateList = [...obj.Adata,...this.totalDateList]
+      this.columns[0].defaultIndex = obj.Adata.length + this.default_index
+    }
   },
   methods:{
     pickerCancel(){ // 取消按钮
@@ -107,14 +133,18 @@ export default {
       let Atiem
       let currentTiem = new Date()
       let currentYear = currentTiem.getFullYear() //当前年
-      let currentDate = currentTiem.getFullYear() + "/" + (parseInt(currentTiem.getMonth()) + 1) + "/" + currentTiem.getDate() //当前年月日
+      let currentDate = currentTiem.getFullYear() + "/" + (parseInt(currentTiem.getMonth()) + 1) + "/" + (currentTiem.getDate()<10?'0' + currentTiem.getDate():currentTiem.getDate())  //当前年月日
       for(let j = 0;j<month.length;j++){
         let day = this.fanDayByYearMonth(Year,month[j])
         for(let s = 1;s<day+1;s++){
           Atiem = Year + '/' + month[j] + '/' + (s<10?'0' + s:s)
+          if(this.currentSelectionDate == Atiem){
+              this.current_index = data.length
+          }
           if(currentDate == Atiem){
             tiem = '今天'
             this.default_index = data.length
+            console.log('今天',data.length)
           }else{
               if(currentYear != Year){
                 tiem =  Year + '/' + month[j] + '/' + (s<10?'0' + s:s) + ' ' + this.weekDay(Atiem)
@@ -162,6 +192,27 @@ export default {
     isRunYear(year) {
       return year%4== 0? (year%100 == 0? (year%400==0? true:false) :true) : false;
     },
+  },
+    watch: {
+      currentSelection:{
+          handler(v){
+              // console.log('c',v)
+              if(v){
+                let selection = new Date(v)
+                let currentSelectionYear = selection.getFullYear() //当前选择年
+                let currentSelectionMonth = parseInt(selection.getMonth()) + 1 //当前选择月
+                let currentSelectionDate = (selection.getDate()<10?'0' + selection.getDate():selection.getDate())  //当前选择日
+                let currentSelectionTime = selection.getHours() //当前选择时
+                let currentSelectionBranch = selection.getMinutes();//当前选择分
+                let currentSelectionSecond = selection.getSeconds() //当前选择秒
+                this.currentSelectionDate = currentSelectionYear + "/" + currentSelectionMonth + "/" + currentSelectionDate
+                this.currentSelectionTime = currentSelectionTime
+                this.currentSelectionBranch = currentSelectionBranch
+                // console.log(selection,currentSelectionYear,currentSelectionMonth,currentSelectionDate)
+              }
+          },
+          immediate:true
+      }
   }
 ```
 

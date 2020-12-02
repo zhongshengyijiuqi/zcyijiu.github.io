@@ -78,11 +78,11 @@ export default {
   }
 ```
 
-### searchRun 事件
+### returnFun 事件
 
 |事件名|说明|回调参数|
 | ----- | ----- | ----- |
-|searchRun|返回|-|
+|returnFun|返回|-|
 
 ### delWhole 事件
 
