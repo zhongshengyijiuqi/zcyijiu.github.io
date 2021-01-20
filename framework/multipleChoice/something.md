@@ -1,13 +1,4 @@
-## 引入
 
-``` js
-    import Vue from 'vue'
-    import {
-        OptionsPageCheckbox
-    } from 'yiyun-app-ozs'
-
-    Vue.component(OptionsPageCheckbox.name,OptionsPageCheckbox)
-```
 ## 代码演示
 
 

@@ -1,13 +1,4 @@
-## 引入
 
-``` js
-    import Vue from 'vue'
-    import {
-        Upload
-    } from 'yiyun-app-ozs'
-
-    Vue.component(Upload.name,Upload)
-```
 ## 代码演示
 
 

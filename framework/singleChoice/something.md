@@ -1,13 +1,4 @@
-## 引入
 
-``` js
-    import Vue from 'vue'
-    import {
-        OptionsPageRadio
-    } from 'yiyun-app-ozs'
-
-    Vue.component(OptionsPageRadio.name,OptionsPageRadio)
-```
 ## 代码演示
 
 

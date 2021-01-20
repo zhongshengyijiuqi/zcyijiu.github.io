@@ -1,13 +1,4 @@
-## 引入
 
-``` js
-    import Vue from 'vue'
-    import {
-        FrameworkCheckbox
-    } from 'yiyun-app-ozs'
-
-    Vue.component(FrameworkCheckbox.name,FrameworkCheckbox)
-```
 ## 代码演示
 
 

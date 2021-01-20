@@ -1,13 +1,4 @@
-## 引入
 
-``` js
-    import Vue from 'vue'
-    import {
-        FrameworkDepartmentRadio
-    } from 'yiyun-app-ozs'
-
-    Vue.component(FrameworkDepartmentRadio.name,FrameworkDepartmentRadio)
-```
 ## 代码演示
 
 

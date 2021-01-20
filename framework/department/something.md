@@ -1,13 +1,4 @@
-## 引入
 
-``` js
-    import Vue from 'vue'
-    import {
-        FrameworkDepartment
-    } from 'yiyun-app-ozs'
-
-    Vue.component(FrameworkDepartment.name,FrameworkDepartment)
-```
 ## 代码演示
 
 

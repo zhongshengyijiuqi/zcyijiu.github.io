@@ -1,13 +1,4 @@
-## 引入
 
-``` js
-    import Vue from 'vue'
-    import {
-        SearchChange
-    } from 'yiyun-app-ozs'
-
-    Vue.component(SearchChange.name,SearchChange)
-```
 ## 代码演示
 
 

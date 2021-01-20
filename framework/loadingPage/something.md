@@ -1,13 +1,4 @@
-## 引入
 
-``` js
-    import Vue from 'vue'
-    import {
-        LoadingPage
-    } from 'yiyun-app-ozs'
-
-    Vue.component(LoadingPage.name,LoadingPage)
-```
 ## 代码演示
 
 
