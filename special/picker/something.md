@@ -16,17 +16,16 @@
 
 ``` js
 export default {
+  name: "SpecialSelector",
   props:{
     currentSelection:{
         type:String,
         default:''
     }
   },
-  data(){
-    return{
-      //选择器
-      actionShow:false,
-columns:[
+  data() {
+    return {
+     columns:[
         {
           values:[], //yyyymmdd 星期X 存放器
           defaultIndex:3,
@@ -65,7 +64,7 @@ columns:[
       totalDateList:[]//yyyymmddhhmmss 格式存放器
     }
   },
-  mounted(){
+  mounted() {
     let currentTiem = new Date()
     let currentYear = currentTiem.getFullYear() //当前年
     let currentTime = currentTiem.getHours() //当前时
@@ -97,14 +96,15 @@ columns:[
       this.totalDateList = [...obj.Adata,...this.totalDateList]
       this.columns[0].defaultIndex = obj.Adata.length + this.default_index
     }
+    // console.log('this.columns',this.columns,this.totalDateList.length - this.default_index)
   },
-  methods:{
+  methods: {
     pickerCancel(){ // 取消按钮
-      this.actionShow = false
+      this.$emit("pickerCancel");
     },
     pickerConfirm(val,index){//确定按钮
       let tiem = this.totalDateList[index[0]] + ' ' +(index[1]<10?'0' + index[1]:index[1]) + ':' + (index[2]<10?'0' + index[2]:index[2])
-      this.actionShow = false
+      this.$emit("pickerConfirm",tiem,index);
     },
     pickerChange(val){//滚动停止后
       let indeses = val.getIndexes()
@@ -124,6 +124,7 @@ columns:[
         this.totalDateList = [...obj.Adata,...this.totalDateList]
         this.columns[0].defaultIndex = obj.Adata.length + dataTotal
       }
+      this.$emit("pickerChange",val);
     },
     timeConversion(Year){ //日期获取
       let data = []
@@ -192,8 +193,13 @@ columns:[
     isRunYear(year) {
       return year%4== 0? (year%100 == 0? (year%400==0? true:false) :true) : false;
     },
+   ...mapMutations([]),
+   ...mapActions([])
   },
-    watch: {
+  computed:{
+    ...mapGetters([]),
+  }, 
+  watch: {
       currentSelection:{
           handler(v){
               // console.log('c',v)
@@ -214,5 +220,6 @@ columns:[
           immediate:true
       }
   }
+};
 ```
 

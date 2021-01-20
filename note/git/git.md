@@ -56,5 +56,7 @@ git push origin [name] //创建远程分支(本地分支push到远程)
 
 git push origin :heads/[name] //删除远程分支
 
+git reset --merge //回退
+
 npm uninstall xxx //删除插件
 ```
