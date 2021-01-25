@@ -15,7 +15,7 @@
         data(){
             return{
             //单选
-                frameworkData:{//组织架构
+                architectureData:{//组织架构
                     deptList:[],
                     departmentList:[],
                     choiceData:{
@@ -27,7 +27,7 @@
                 deptConcat:[],
                 deptList:[],
                 choiceData:{},
-                optionsShow:false,
+                architectureRadio:false,
             }
         },
         mounted(){
@@ -35,16 +35,16 @@
         },
         methods:{
             taskLeader(){
-                this.optionsShow = true
-                this.frameworkData.choiceData = this.choiceData
+                this.architectureRadio = true
+                this.architectureData.choiceData = this.choiceData
             },
             //单选
-            frameworkFun(item){
+            architectureRadioFun(item){
                 this.choiceData = item
-                this.optionsShow = false
+                this.architectureRadio = false
             },
-            frameworkreturnFun(){
-                this.optionsShow = false
+            architecturereturnFun(){
+                this.architectureRadio = false
             },
             
            async getDeptListFun(){//获取组织部门
@@ -121,8 +121,8 @@
                     }
                     })
                     deptConcatlist.push(...personalList); //最顶级部门 人员合并
-                    this.frameworkData.deptList = JSON.parse(JSON.stringify(deptConcatlist)) 
-                    this.frameworkData.departmentList = JSON.parse(JSON.stringify(this.deptConcat))
+                    this.architectureData.deptList = JSON.parse(JSON.stringify(deptConcatlist)) 
+                    this.architectureData.departmentList = JSON.parse(JSON.stringify(this.deptConcat))
 
                 } catch (error) {
                     console.log('按部门查成员',error)

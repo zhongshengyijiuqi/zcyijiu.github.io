@@ -6,8 +6,8 @@
     <div @click="taskLeaderBox">组织架构多选</div>
 
     <frameworkCheckbox 
-      :optionsShow="architectureRadio" 
-      :frameworkData="architectureData" 
+      :optionsShow="optionsBoxShow" 
+      :frameworkData="frameworkBoxData" 
        @frameworkCheckboxFun="frameworkCheckboxFun" 
        @frameworkreturnBoxFun="frameworkreturnBoxFun"
     ></frameworkCheckbox>

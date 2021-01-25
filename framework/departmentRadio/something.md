@@ -28,30 +28,11 @@
                     
                     ],
                 },
-                multipleSonRadio:[
-                    {
-                        active: true,
-                        checked: false,//选择  人员有选择状态  部门没有
-                        data: [],//部门下级
-                        deptIdList: [],
-                        fatherName: "后端",//所属上级部门名称
-                        id: "3u2i7Y8xVCj",
-                        isWhether: true,//是否为人员
-                        name: "zqp",
-                        profilePicture: "https://dl-platform.effio.cn/84217038-aa79-4bb8-a499-5dd0fc7ef06b/user-head/137384615141574997944474.gif",
-                        selection: false,//选中 部门有选中状态 人员选中状态
-                    }
+                multipleSonRadio:[//人员选中集合
+
                 ],
-                multipleChoiceRadioList:[
-                    {
-                        checked: false,  //选择  人员有选择状态  部门没有
-                        data: [],//部门下级
-                        id: "1211841814905937920",
-                        isWhether: false,//是否为人员
-                        name: "前端",
-                        parentId: "",
-                        selection: false,//选中 部门有选中状态 人员选中状态
-                    }
+                multipleChoiceRadioList:[//部门选中集合
+                    
                 ],
             }
         },
