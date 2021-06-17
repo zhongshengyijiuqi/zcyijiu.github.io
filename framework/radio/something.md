@@ -61,12 +61,12 @@
                     deptList.push('-1')
                     this.deptList = res
                     this.deptConcat = JSON.parse(JSON.stringify(res))
-                    this.postMemberInfoByDeptFun()
+                    this.postMemberInfoByDeptFun(deptList)
                 } catch (error) {
                     console.log('获取组织部门',error)
                 }
             },
-           async postMemberInfoByDeptFun(){
+           async postMemberInfoByDeptFun(deptList){
                 try {
                     let departmentList = await this.postMemberInfoByDept({page:1,num:1000,isAll:true,deptIdList:deptList})
                     departmentList.forEach(arr =>{
